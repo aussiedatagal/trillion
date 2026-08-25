@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "description": "GDP comparison countries for contextualizing $1 trillion. Progression from small to large economies, with $1T reference point in the middle.",
+    "dataSource": "IMF World Economic Outlook April 2026",
+    "sourceFile": "imf-gdp.csv",
+    "year": 2026,
+    "unit": "Billions USD"
+  },
+  "countries": [
+    {
+      "rank": 1,
+      "country": "Vanuatu",
+      "gdp": 1.4,
+      "comparison": "1.4% of $1T"
+    },
+    {
+      "rank": 2,
+      "country": "Liberia",
+      "gdp": 5.6,
+      "comparison": "0.6% of $1T"
+    },
+    {
+      "rank": 3,
+      "country": "Iceland",
+      "gdp": 43.8,
+      "comparison": "4.4% of $1T"
+    },
+    {
+      "rank": 4,
+      "country": "Nepal",
+      "gdp": 45.8,
+      "comparison": "4.6% of $1T"
+    },
+    {
+      "rank": 5,
+      "country": "Tunisia",
+      "gdp": 60.7,
+      "comparison": "6.1% of $1T"
+    },
+    {
+      "rank": 6,
+      "country": "Ghana",
+      "gdp": 118.3,
+      "comparison": "11.8% of $1T"
+    },
+    {
+      "rank": 7,
+      "country": "New Zealand",
+      "gdp": 278.6,
+      "comparison": "27.9% of $1T"
+    },
+    {
+      "rank": 8,
+      "country": "Greece",
+      "gdp": 307.6,
+      "comparison": "30.8% of $1T"
+    },
+    {
+      "rank": 9,
+      "country": "Bangladesh",
+      "gdp": 510.7,
+      "comparison": "51.1% of $1T"
+    },
+    {
+      "rank": 10,
+      "country": "Vietnam",
+      "gdp": 527.3,
+      "comparison": "52.7% of $1T"
+    },
+    {
+      "rank": 11,
+      "country": "Singapore",
+      "gdp": 659.6,
+      "comparison": "66.0% of $1T"
+    },
+    {
+      "rank": 12,
+      "country": "Sweden",
+      "gdp": 760.5,
+      "comparison": "76.1% of $1T"
+    },
+    {
+      "rank": null,
+      "country": "$1 TRILLION",
+      "gdp": 1000.0,
+      "comparison": "Reference Point",
+      "note": "One person's wealth"
+    },
+    {
+      "rank": 13,
+      "country": "Poland",
+      "gdp": 1134.2,
+      "comparison": "113.4% of $1T"
+    },
+    {
+      "rank": 14,
+      "country": "Switzerland",
+      "gdp": 1146.9,
+      "comparison": "114.7% of $1T"
+    }
+  ],
+  "sourceNotes": {
+    "methodology": "All 2026 GDP figures extracted from IMF World Economic Outlook April 2026 dataset. Values in billions of current USD.",
+    "selection": "Countries chosen to show progression from smallest to largest major economies, with reference point at $1 trillion."
+  }
+}

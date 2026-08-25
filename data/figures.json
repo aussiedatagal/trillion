@@ -1,0 +1,141 @@
+{
+  "permanentSolutions": {
+    "description": "One-time capital investments that create permanent infrastructure.",
+    "clean_water_infrastructure": {
+      "value": 100,
+      "unit": "billion USD",
+      "type": "one-time capital cost",
+      "beneficiaries": "2 billion people without safely managed drinking water",
+      "source": "World Vision",
+      "url": "https://www.worldvision.org/clean-water-news-stories/global-water-crisis-facts",
+      "quote": "The average cost for World Vision to equip one person with access to clean water is $50. For 2 billion people: $100 billion",
+      "calculation": "$50/person × 2 billion people = $100 billion"
+    },
+    "housing_infrastructure": {
+      "value": null,
+      "unit": "billion USD (estimated)",
+      "type": "one-time capital cost",
+      "description": "Adequate housing for 1.6-3 billion people in inadequate housing/slums by 2030",
+      "beneficiaries": "3 billion people (40% of world population) needing adequate housing by 2030",
+      "source": "UN-Habitat",
+      "url": "https://unhabitat.org/topic/housing",
+      "quote": "By 2030, 3 billion people (40% of world population) will need access to adequate housing, translating into 96,000 new affordable homes every day",
+      "note": "No consolidated global cost estimate available; need is massive and ongoing"
+    },
+    "electricity_universal_access": {
+      "value": 50,
+      "unit": "billion USD/year average through 2030",
+      "type": "annual average investment",
+      "beneficiaries": "660 million people without electricity access",
+      "source": "World Bank Energy Overview",
+      "url": "https://www.worldbank.org/en/topic/energy/overview",
+      "quote": "Ensuring universal access to electricity by 2030 requires annual investment of $50 billion average"
+    },
+    "electricity_expansion": {
+      "value": 630,
+      "unit": "billion USD/year by 2035",
+      "type": "annual investment requirement",
+      "beneficiaries": "Developing countries electricity generation expansion",
+      "source": "World Bank Energy Overview",
+      "url": "https://www.worldbank.org/en/topic/energy/overview",
+      "quote": "Annual investment in electricity generation in developing countries needs more than double by 2035—from $280 billion today to $630 billion"
+    }
+  },
+  "perpetualPrograms": {
+    "description": "Annual recurring costs for humanitarian programs (2025-2026 figures).",
+    "tb_programs": {
+      "value": 22,
+      "unit": "billion USD/year",
+      "type": "annual recurring",
+      "beneficiaries": "Global tuberculosis prevention, diagnosis, treatment, and care",
+      "currentFunding": 5.9,
+      "fundingGap": 16.1,
+      "year": 2025,
+      "source": "WHO Global Tuberculosis Report 2025",
+      "url": "https://www.who.int/teams/global-programme-on-tuberculosis-and-lung-health/tb-reports/global-tuberculosis-report-2025/tb-financing/4-1-financing-for-tb-prevention--diagnostic-and-treatment-services",
+      "quote": "US$22 billion required annually for TB prevention, diagnosis, treatment and care. In 2024, only US$5.9 billion was available (27% of target)"
+    },
+    "malaria_programs": {
+      "value": 9.3,
+      "unit": "billion USD/year",
+      "type": "annual recurring",
+      "beneficiaries": "Global malaria prevention and control",
+      "currentFunding": 3.9,
+      "fundingGap": 5.4,
+      "year": 2025,
+      "source": "WHO World Malaria Report 2025",
+      "url": "https://www.who.int/teams/global-malaria-programme/reports/world-malaria-report-2025",
+      "quote": "2025 funding target: US$9.3 billion. 2024 funding was US$3.9 billion. Projected shortfall: US$5.4 billion"
+    },
+    "hiv_aids_programs": {
+      "value": 21.9,
+      "unit": "billion USD/year",
+      "type": "annual recurring",
+      "beneficiaries": "Global HIV/AIDS prevention, treatment, and care (low/middle-income countries)",
+      "note_2026": "UNAIDS reports needs up to $29.3B by 2025, but long-term target is $21.9B/year by 2030",
+      "year": 2026,
+      "source": "UNAIDS Global AIDS Update 2025",
+      "url": "https://www.unaids.org/en/UNAIDS-global-AIDS-update-2025",
+      "quote": "Estimated $21.9 billion needed annually by 2030 for AIDS response in low- and middle-income countries"
+    },
+    "food_security_wfp": {
+      "value": 13,
+      "unit": "billion USD/year",
+      "type": "annual recurring",
+      "beneficiaries": "110 million people (2026 reality-based allocation)",
+      "year": 2026,
+      "note": "WFP 2025 needed $16.9B but only received portion. 2026 target reduced to $13B to reach 110M",
+      "source": "World Food Programme 2026 Global Outlook",
+      "url": "https://www.wfp.org/news/wfp-prioritize-feeding-110-million-hungriest-2026-global-hunger-deepens-amidst-uncertain",
+      "quote": "WFP aims to reach 110 million of the most vulnerable at an estimated cost of $13 billion in 2026"
+    },
+    "food_security_full": {
+      "value": 40,
+      "unit": "billion USD/year",
+      "type": "annual recurring",
+      "beneficiaries": "Structural hunger elimination",
+      "year": 2024,
+      "note": "Full cost to end hunger. WFP 2026 realistic funding is $13B, full need is ~$40B",
+      "source": "World Food Programme",
+      "url": "https://wfpusa.org/news/how-much-would-it-cost-to-end-world-hunger/",
+      "quote": "WFP needs approximately $40 billion per year to feed all of the world's hungry people"
+    },
+    "combined_three_diseases": {
+      "value": 53.2,
+      "unit": "billion USD/year",
+      "type": "annual recurring",
+      "description": "TB ($22B) + Malaria ($9.3B) + HIV/AIDS ($21.9B) combined annual cost",
+      "calculation": "$22B + $9.3B + $21.9B = $53.2B/year",
+      "source": "Compiled from WHO and UNAIDS 2025-2026 reports",
+      "url": null
+    }
+  },
+  "perpetualFund": {
+    "description": "The power of investment returns: $50B annually without touching the principal.",
+    "returns_5_percent": {
+      "value": 50,
+      "unit": "billion USD/year",
+      "type": "perpetual investment returns",
+      "principal": 1000,
+      "returnRate": "5% annual",
+      "description": "$1 trillion invested at 5% annual return generates $50 billion per year forever",
+      "source": "Standard investment return assumptions",
+      "url": null,
+      "assumption": "Conservative 5% annual return on $1 trillion principal (4% is very conservative, 6-7% is typical stock market)"
+    },
+    "covers_three_diseases_nearly_exactly": {
+      "comparison": "$50B/year covers TB ($22B) + Malaria ($9.3B) + HIV ($21.9B) = $53.2B",
+      "surplus": "Covers 94% of all three major disease programs with annual returns alone",
+      "interpretation": "The growth of this single person's wealth annually nearly matches what the world needs to fund all three major disease programs forever",
+      "source": "Compiled from program costs above"
+    }
+  },
+  "sourceNotes": {
+    "dataYear": "2025-2026 data used where available; 2024 baseline adjusted for most recent figures",
+    "gdpData": "IMF World Economic Outlook 2026 forecasts in nominal USD",
+    "healthData": "WHO 2025 reports (TB, Malaria); UNAIDS 2025-2026 updates; WFP 2026 outlook",
+    "infrastructureData": "World Bank and UN-Habitat 2024-2025 estimates",
+    "wealthInequality": "Oxfam and World Inequality Database current data",
+    "methodology": "All figures extracted from institutional reports. URLs point to primary/authoritative sources."
+  }
+}
