@@ -37,20 +37,16 @@
             min-height: 100vh;
         }
 
-        .hunger-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        .countries-section {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
         }
 
         .water-section {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
-        .countries-section {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-        }
-
-        .comparisons-section {
-            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        .perpetual-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
         .sticky-container {
@@ -111,7 +107,7 @@
             padding: 2rem;
             border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.2);
-            max-width: 600px;
+            max-width: 640px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -135,11 +131,42 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
+        .breakdown {
+            font-size: 0.95rem;
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .breakdown div {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.15rem 0;
+        }
+
         .dollar-sign {
             font-size: clamp(4rem, 20vw, 12rem);
             font-weight: 900;
             margin-bottom: 1rem;
             opacity: 0.9;
+        }
+
+        .source-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+        }
+
+        .load-error {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: #b91c1c;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            z-index: 999;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 768px) {
@@ -169,20 +196,14 @@
         </div>
     </section>
 
-    <!-- End World Hunger -->
-    <section class="hunger-section">
+    <!-- Countries Ranking -->
+    <section class="countries-section">
         <div class="sticky-container">
-            <canvas id="hungerCanvas"></canvas>
+            <canvas id="countriesCanvas"></canvas>
             <div class="info-panel">
-                <h2>Also: End World Hunger</h2>
-                <p><strong>After solving clean water</strong> ($60B used)</p>
-                <p style="margin-top: 0.5rem;">Remaining: <strong>$940 billion</strong></p>
-                <div class="stat-highlight">31+ YEARS</div>
-                <p>That's how long you could sustain food assistance for 783M hungry people with what's left.</p>
-                <p style="margin-top: 1rem; font-size: 0.95rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px;">
-                  <strong>Cumulative progress:</strong> Clean water for 2B + Food for 783M (31 years) = $1B spent, $0 remaining
-                </p>
-                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">Sources: World Food Programme, FAO, UN</p>
+                <h2>Where $1T Sits in Global Context</h2>
+                <p style="font-size: 0.95rem;">Scroll to see $1T compared against national GDPs. One person's wealth exceeds the annual economic output of most countries on Earth.</p>
+                <p class="source-note">Source: IMF World Economic Outlook, April 2026</p>
             </div>
         </div>
     </section>
@@ -193,23 +214,27 @@
             <canvas id="waterCanvas"></canvas>
             <div class="info-panel">
                 <h2>The Global Water Crisis: Solved</h2>
-                <p>All 2 billion people without safe drinking water: <strong>$60 billion</strong></p>
+                <p>Everyone without safely managed drinking water &mdash; <span id="water-beneficiaries">2.2 billion people</span> &mdash; connected for: <strong><span id="water-cost">$110 billion</span></strong></p>
                 <div class="stat-highlight">ENTIRE CRISIS SOLVED</div>
-                <p>One-time investment of $60B eliminates lack of safe drinking water as a human problem, forever.</p>
-                <p>That's 0.006% of $1T. Leaves $999.94 billion still unused.</p>
-                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">Sources: WHO, UN-Water, World Bank</p>
+                <p>A one-time investment of <span id="water-cost-2">$110B</span> eliminates lack of safe drinking water as a human problem &mdash; forever.</p>
+                <p>That's <span id="water-percent">11%</span> of $1T. <span id="water-remaining">$890 billion</span> still unspent.</p>
+                <p class="source-note">Source: World Vision, using WHO/UNICEF Joint Monitoring Programme figures</p>
             </div>
         </div>
     </section>
 
-    <!-- Countries Ranking -->
-    <section class="countries-section">
+    <!-- Perpetual Fund: disease programs -->
+    <section class="perpetual-section">
         <div class="sticky-container">
-            <canvas id="countriesCanvas"></canvas>
+            <canvas id="perpetualCanvas"></canvas>
             <div class="info-panel">
-                <h2>Where $1T Sits in Global Context</h2>
-                <p style="font-size: 0.95rem;">Scroll to see $1T compared against every nation's annual GDP. One person's wealth exceeds most countries' annual economic output.</p>
-                <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 1.5rem;">Sources: World Bank GDP Data 2023</p>
+                <h2>Fund It Forever</h2>
+                <p>$1 trillion invested at a conservative 5% return generates:</p>
+                <div class="stat-highlight">$50 billion / year &mdash; forever</div>
+                <p>Without ever touching the principal, that's enough to cover <strong id="perpetual-percent">94%</strong> of what the world needs every year for TB, malaria and HIV/AIDS combined.</p>
+                <div class="breakdown" id="perpetual-breakdown"></div>
+                <p style="margin-top: 0.75rem; font-size: 0.95rem;">Or: solve water once ($110B), then invest the remaining $890B &mdash; still <strong>$44.5B/year forever</strong>, 84% of the same three-disease bill, permanently.</p>
+                <p class="source-note">Sources: WHO Global Tuberculosis Report 2025; WHO World Malaria Report 2025; UNAIDS Global AIDS Update 2025</p>
             </div>
         </div>
     </section>
@@ -221,268 +246,287 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hunger visualization
-        const hungerCanvas = document.getElementById('hungerCanvas');
-        if (hungerCanvas) {
-            const ctx = hungerCanvas.getContext('2d');
+        // All figures are loaded from the JSON data files at runtime so the
+        // page can never drift out of sync with the sourced numbers again.
+        let DATA = null;
+        let COUNTRIES = null;
 
-            function resizeCanvas() {
-                hungerCanvas.width = window.innerWidth;
-                hungerCanvas.height = window.innerHeight;
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
+        function resizeCanvas(canvas) {
+            canvas.width = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
+        }
 
+        // ---------- Countries section ----------
+        function initCountriesCanvas() {
+            const canvas = document.getElementById('countriesCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            const rows = COUNTRIES.countries; // includes the $1T reference row already
+
+            resizeCanvas(canvas);
+            window.addEventListener('resize', () => resizeCanvas(canvas));
+
+            const section = canvas.closest('section');
             ScrollTrigger.create({
-                trigger: hungerCanvas,
-                start: 'top center',
-                end: 'bottom center',
+                trigger: section,
+                start: 'top top',
+                end: 'bottom bottom',
                 onUpdate: (self) => {
                     const progress = self.progress;
-                    ctx.clearRect(0, 0, hungerCanvas.width, hungerCanvas.height);
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                    // Stacked budget visualization
-                    const barWidth = hungerCanvas.width * 0.7;
-                    const barX = (hungerCanvas.width - barWidth) / 2;
-                    const startY = hungerCanvas.height * 0.3;
-                    const barHeight = 50;
-                    const spacing = 80;
+                    const barHeight = 30;
+                    const spacing = 40;
+                    const maxWidth = canvas.width * 0.65;
+                    const startX = canvas.width * 0.25;
 
-                    // Water section ($60B) - always full
-                    ctx.fillStyle = 'rgba(100, 200, 255, 0.7)';
-                    ctx.fillRect(barX, startY, barWidth * 0.06, barHeight); // $60B out of $1T
-                    ctx.strokeStyle = 'rgba(100, 200, 255, 0.9)';
-                    ctx.lineWidth = 2;
-                    ctx.strokeRect(barX, startY, barWidth * 0.06, barHeight);
+                    const numToShow = Math.max(1, Math.floor(progress * (rows.length + 1)));
+                    const visible = rows.slice(0, numToShow);
 
-                    ctx.fillStyle = 'rgba(100, 200, 255, 0.9)';
-                    ctx.font = 'bold 14px sans-serif';
-                    ctx.textAlign = 'center';
-                    ctx.fillText('Water: $60B', barX + (barWidth * 0.03), startY + 65);
+                    const maxGDP = Math.max(...visible.map(c => c.gdp), 1000);
+                    const scale = maxWidth / maxGDP;
+                    const startY = (canvas.height - (visible.length + 1) * spacing) / 2;
 
-                    // Hunger section - grows as you scroll, using remaining $940B
-                    const hungerBudgetPercent = (progress * 31 / 33); // Can fund 31 years with $940B
-                    const hungerBarWidth = barWidth * hungerBudgetPercent;
+                    visible.forEach((c, i) => {
+                        const y = startY + i * spacing;
+                        const barWidth = c.gdp * scale;
+                        const isTrillion = c.country === '$1 TRILLION';
 
-                    ctx.fillStyle = 'rgba(255, 150, 100, 0.7)';
-                    ctx.fillRect(barX + barWidth * 0.06, startY + spacing, hungerBarWidth, barHeight);
-                    ctx.strokeStyle = 'rgba(255, 150, 100, 0.9)';
-                    ctx.lineWidth = 2;
-                    ctx.strokeRect(barX + barWidth * 0.06, startY + spacing, hungerBarWidth, barHeight);
+                        ctx.fillStyle = isTrillion ? 'rgba(255, 255, 100, 0.7)' : `hsl(${(i / visible.length) * 120}, 70%, 50%)`;
+                        ctx.fillRect(startX, y, barWidth, barHeight);
+                        if (isTrillion) {
+                            ctx.strokeStyle = 'rgba(255, 255, 0, 0.9)';
+                            ctx.lineWidth = 3;
+                            ctx.strokeRect(startX, y, barWidth, barHeight);
+                        }
 
-                    ctx.fillStyle = 'rgba(255, 150, 100, 0.9)';
-                    ctx.font = 'bold 14px sans-serif';
-                    ctx.textAlign = 'left';
-                    ctx.fillText(`Hunger: $${(progress * 940).toFixed(0)}B (${Math.floor(progress * 31)} years)`,
-                        barX + barWidth * 0.1, startY + spacing + 65);
+                        ctx.fillStyle = isTrillion ? 'rgba(255, 255, 0, 0.95)' : 'rgba(255,255,255,0.95)';
+                        ctx.font = 'bold 13px sans-serif';
+                        ctx.textAlign = 'right';
+                        ctx.fillText(c.country, startX - 12, y + 20);
 
-                    // Total and remaining
-                    const totalUsed = 60 + (progress * 940);
-                    const remaining = 1000 - totalUsed;
+                        ctx.font = '12px sans-serif';
+                        ctx.textAlign = 'left';
+                        ctx.fillText(`$${(c.gdp / 1000).toFixed(2)}T`, startX + barWidth + 10, y + 20);
+                    });
 
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-                    ctx.font = 'bold 18px sans-serif';
-                    ctx.textAlign = 'center';
-                    ctx.fillText(`Total Spent: $${totalUsed.toFixed(0)}B`, hungerCanvas.width / 2, startY + spacing * 2.5);
-
-                    ctx.fillStyle = remaining > 0 ? 'rgba(100, 255, 100, 0.9)' : 'rgba(255, 100, 100, 0.9)';
-                    ctx.fillText(`Remaining: $${Math.max(0, remaining).toFixed(0)}B`, hungerCanvas.width / 2, startY + spacing * 2.8);
-
-                    // Impact summary
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-                    ctx.font = '16px sans-serif';
-                    ctx.textAlign = 'center';
-                    ctx.fillText('2B people with clean water • 783M people fed for 31 years', hungerCanvas.width / 2, hungerCanvas.height - 80);
+                    if (numToShow < rows.length) {
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                        ctx.font = '14px sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.fillText('↓ Scroll to see more countries ↓', canvas.width / 2, canvas.height - 40);
+                    }
                 }
             });
         }
 
-        // Water visualization - entire crisis solved
-        const waterCanvas = document.getElementById('waterCanvas');
-        if (waterCanvas) {
-            const ctx = waterCanvas.getContext('2d');
+        // ---------- Water access section ----------
+        function initWaterCanvas() {
+            const canvas = document.getElementById('waterCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const water = DATA.permanentSolutions.clean_water_infrastructure;
+            const billionsOfPeople = 2.2; // from water.beneficiaries, kept numeric for the animation
 
-            function resizeCanvas() {
-                waterCanvas.width = window.innerWidth;
-                waterCanvas.height = window.innerHeight;
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas(canvas);
+            window.addEventListener('resize', () => resizeCanvas(canvas));
 
+            const section = canvas.closest('section');
             ScrollTrigger.create({
-                trigger: waterCanvas,
-                start: 'top center',
-                end: 'bottom center',
+                trigger: section,
+                start: 'top top',
+                end: 'bottom bottom',
                 onUpdate: (self) => {
                     const progress = self.progress;
-                    ctx.clearRect(0, 0, waterCanvas.width, waterCanvas.height);
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                    // Show two tanks: "without access" decreasing, "with access" increasing
-                    const tankWidth = waterCanvas.width * 0.25;
-                    const tankHeight = waterCanvas.height * 0.6;
-                    const spacing = waterCanvas.width * 0.3;
-                    const tank1X = waterCanvas.width * 0.2;
-                    const tank2X = waterCanvas.width * 0.55;
-                    const tankY = (waterCanvas.height - tankHeight) / 2;
+                    const tankWidth = canvas.width * 0.25;
+                    const tankHeight = canvas.height * 0.6;
+                    const tank1X = canvas.width * 0.2;
+                    const tank2X = canvas.width * 0.55;
+                    const tankY = (canvas.height - tankHeight) / 2;
 
-                    // LEFT TANK: Without access (red, draining)
+                    // LEFT TANK: without access (draining)
                     ctx.strokeStyle = 'rgba(255,100,100,0.7)';
                     ctx.lineWidth = 3;
                     ctx.strokeRect(tank1X, tankY, tankWidth, tankHeight);
-
-                    const waterHeight1 = tankHeight * (1 - progress);
-                    ctx.fillStyle = `rgba(255, 100, 100, 0.5)`;
-                    ctx.fillRect(tank1X, tankY + tankHeight - waterHeight1, tankWidth, waterHeight1);
-
+                    const h1 = tankHeight * (1 - progress);
+                    ctx.fillStyle = 'rgba(255, 100, 100, 0.5)';
+                    ctx.fillRect(tank1X, tankY + tankHeight - h1, tankWidth, h1);
                     ctx.fillStyle = 'rgba(255, 100, 100, 0.9)';
                     ctx.font = 'bold 18px sans-serif';
                     ctx.textAlign = 'center';
-                    ctx.fillText(`${Math.ceil(2 * (1 - progress))}B`, tank1X + tankWidth / 2, tankY - 30);
+                    ctx.fillText(`${(billionsOfPeople * (1 - progress)).toFixed(1)}B`, tank1X + tankWidth / 2, tankY - 30);
                     ctx.font = '14px sans-serif';
                     ctx.fillText('WITHOUT', tank1X + tankWidth / 2, tankY - 10);
                     ctx.fillText('CLEAN WATER', tank1X + tankWidth / 2, tankY + 5);
 
-                    // RIGHT TANK: With access (green, filling)
+                    // RIGHT TANK: with access (filling)
                     ctx.strokeStyle = 'rgba(100,255,100,0.7)';
                     ctx.lineWidth = 3;
                     ctx.strokeRect(tank2X, tankY, tankWidth, tankHeight);
-
-                    const waterHeight2 = tankHeight * progress;
-                    ctx.fillStyle = `rgba(100, 255, 100, 0.5)`;
-                    ctx.fillRect(tank2X, tankY + tankHeight - waterHeight2, tankWidth, waterHeight2);
-
+                    const h2 = tankHeight * progress;
+                    ctx.fillStyle = 'rgba(100, 255, 100, 0.5)';
+                    ctx.fillRect(tank2X, tankY + tankHeight - h2, tankWidth, h2);
                     ctx.fillStyle = 'rgba(100, 255, 100, 0.9)';
                     ctx.font = 'bold 18px sans-serif';
                     ctx.textAlign = 'center';
-                    ctx.fillText(`${Math.ceil(2 * progress)}B`, tank2X + tankWidth / 2, tankY - 30);
+                    ctx.fillText(`${(billionsOfPeople * progress).toFixed(1)}B`, tank2X + tankWidth / 2, tankY - 30);
                     ctx.font = '14px sans-serif';
                     ctx.fillText('WITH', tank2X + tankWidth / 2, tankY - 10);
                     ctx.fillText('CLEAN WATER', tank2X + tankWidth / 2, tankY + 5);
 
-                    // Arrow between
                     ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
                     ctx.lineWidth = 2;
                     ctx.beginPath();
-                    ctx.moveTo(tank1X + tankWidth + 20, waterCanvas.height / 2);
-                    ctx.lineTo(tank2X - 20, waterCanvas.height / 2);
+                    ctx.moveTo(tank1X + tankWidth + 20, canvas.height / 2);
+                    ctx.lineTo(tank2X - 20, canvas.height / 2);
                     ctx.stroke();
 
                     ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
                     ctx.font = '18px sans-serif';
                     ctx.textAlign = 'center';
-                    ctx.fillText('$60B', waterCanvas.width / 2, waterCanvas.height / 2 + 30);
+                    ctx.fillText(`$${water.value}B`, canvas.width / 2, canvas.height / 2 + 30);
                 }
             });
         }
 
-        // Countries visualization - progressive reveal
-        const countriesCanvas = document.getElementById('countriesCanvas');
-        if (countriesCanvas) {
-            const ctx = countriesCanvas.getContext('2d');
-
-            // Countries by GDP 2023 (billions USD) - from small upward, plus context above $1T
-            const countriesList = [
-                { name: 'Portugal', gdp: 280 },
-                { name: 'Belgium', gdp: 598 },
-                { name: 'Sweden', gdp: 610 },
-                { name: 'Poland', gdp: 688 },
-                { name: 'Netherlands', gdp: 1080 },
-                { name: 'Spain', gdp: 1390 },
-                { name: 'Mexico', gdp: 1290 },
-                { name: 'South Korea', gdp: 1670 },
-                { name: 'Italy', gdp: 2010 },
-                { name: 'Brazil', gdp: 2120 },
-                { name: 'Canada', gdp: 2140 },
-                { name: 'Germany', gdp: 2320 },
-                { name: 'France', gdp: 3030 },
-                { name: 'UK', gdp: 3330 },
-                { name: 'India', gdp: 3900 },
-                { name: 'Japan', gdp: 4230 },
-                { name: 'China', gdp: 17840 },
-                { name: 'USA', gdp: 27360 },
+        // ---------- Perpetual fund section ----------
+        function initPerpetualCanvas() {
+            const canvas = document.getElementById('perpetualCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const p = DATA.perpetualPrograms;
+            const programs = [
+                { label: 'TB', target: p.tb_programs.value, funded: p.tb_programs.currentFunding },
+                { label: 'Malaria', target: p.malaria_programs.value, funded: p.malaria_programs.currentFunding },
+                { label: 'HIV/AIDS', target: p.hiv_aids_programs.value, funded: p.hiv_aids_programs.currentFunding }
             ];
+            const perpetualReturn = DATA.perpetualFund.returns_5_percent.value; // $50B/yr
 
-            function resizeCanvas() {
-                countriesCanvas.width = window.innerWidth;
-                countriesCanvas.height = window.innerHeight;
-            }
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas(canvas);
+            window.addEventListener('resize', () => resizeCanvas(canvas));
 
+            const section = canvas.closest('section');
             ScrollTrigger.create({
-                trigger: countriesCanvas,
-                start: 'top center',
-                end: 'bottom center',
+                trigger: section,
+                start: 'top top',
+                end: 'bottom bottom',
                 onUpdate: (self) => {
                     const progress = self.progress;
-                    ctx.clearRect(0, 0, countriesCanvas.width, countriesCanvas.height);
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                    const barHeight = 35;
-                    const spacing = 45;
-                    const maxWidth = countriesCanvas.width * 0.7;
-                    const startX = countriesCanvas.width * 0.2;
+                    const barWidth = canvas.width * 0.6;
+                    const barX = (canvas.width - barWidth) / 2;
+                    const barHeight = 40;
+                    const spacing = 70;
+                    const startY = canvas.height * 0.25;
+                    const maxTarget = Math.max(...programs.map(pr => pr.target));
+                    const scale = barWidth / maxTarget;
 
-                    // Determine how many countries to show based on scroll progress
-                    // Show countries progressively as you scroll
-                    const numCountriesToShow = Math.floor(progress * (countriesList.length + 1));
-                    const visibleCountries = countriesList.slice(0, Math.max(1, numCountriesToShow));
-
-                    // Find the max GDP in visible countries (or $1T, whichever is larger)
-                    let maxVisibleGDP = Math.max(...visibleCountries.map(c => c.gdp), 1000);
-                    const scale = maxWidth / maxVisibleGDP;
-
-                    const startY = (countriesCanvas.height - (visibleCountries.length + 1) * spacing) / 2;
-
-                    // Draw visible countries
-                    for (let i = 0; i < visibleCountries.length; i++) {
+                    programs.forEach((pr, i) => {
                         const y = startY + i * spacing;
-                        const country = visibleCountries[i];
-                        const barWidth = country.gdp * scale;
+                        const targetWidth = pr.target * scale * progress;
+                        const fundedWidth = pr.funded * scale * progress;
 
-                        // Bar color
-                        ctx.fillStyle = `hsl(${(i / visibleCountries.length) * 120}, 70%, 50%)`;
-                        ctx.fillRect(startX, y, barWidth, barHeight);
+                        // Target bar (gap), drawn first
+                        ctx.fillStyle = 'rgba(255, 200, 100, 0.35)';
+                        ctx.fillRect(barX, y, targetWidth, barHeight);
+                        // Funded portion, drawn on top
+                        ctx.fillStyle = 'rgba(100, 255, 150, 0.75)';
+                        ctx.fillRect(barX, y, fundedWidth, barHeight);
+                        ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+                        ctx.lineWidth = 1.5;
+                        ctx.strokeRect(barX, y, targetWidth, barHeight);
 
-                        // Country label
                         ctx.fillStyle = 'rgba(255,255,255,0.95)';
-                        ctx.font = 'bold 14px sans-serif';
+                        ctx.font = 'bold 15px sans-serif';
                         ctx.textAlign = 'right';
-                        ctx.fillText(country.name, startX - 15, y + 23);
+                        ctx.fillText(pr.label, barX - 12, y + 25);
 
-                        // GDP amount
                         ctx.font = '13px sans-serif';
                         ctx.textAlign = 'left';
-                        ctx.fillText(`$${(country.gdp / 1000).toFixed(2)}T`, startX + barWidth + 10, y + 23);
-                    }
+                        const pct = Math.round((pr.funded / pr.target) * 100);
+                        ctx.fillText(`$${pr.funded}B funded of $${pr.target}B (${pct}%)`, barX + targetWidth + 10, y + 25);
+                    });
 
-                    // Add $1T row
-                    const trillionY = startY + visibleCountries.length * spacing;
-                    const trillionWidth = 1000 * scale;
-
-                    // $1T bar
-                    ctx.fillStyle = 'rgba(255, 255, 100, 0.6)';
-                    ctx.fillRect(startX, trillionY, trillionWidth, barHeight);
+                    // $50B/year perpetual-fund reference line across all bars
+                    const lineX = barX + perpetualReturn * scale * progress;
                     ctx.strokeStyle = 'rgba(255, 255, 0, 0.9)';
-                    ctx.lineWidth = 3;
-                    ctx.strokeRect(startX, trillionY, trillionWidth, barHeight);
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([6, 4]);
+                    ctx.beginPath();
+                    ctx.moveTo(lineX, startY - 20);
+                    ctx.lineTo(lineX, startY + spacing * (programs.length - 1) + barHeight + 10);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
 
-                    // $1T label
                     ctx.fillStyle = 'rgba(255, 255, 0, 0.95)';
-                    ctx.font = 'bold 16px sans-serif';
-                    ctx.textAlign = 'right';
-                    ctx.fillText('$1 TRILLION', startX - 15, trillionY + 23);
-
-                    // Show hint
-                    if (numCountriesToShow < countriesList.length) {
-                        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-                        ctx.font = '14px sans-serif';
-                        ctx.textAlign = 'center';
-                        ctx.fillText('↓ Scroll to see more countries ↓', countriesCanvas.width / 2, countriesCanvas.height - 40);
-                    }
+                    ctx.font = 'bold 14px sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(`$${perpetualReturn}B/year, forever`, lineX, startY - 30);
                 }
             });
         }
 
+        // ---------- Text placeholders driven by data ----------
+        function populateText() {
+            const water = DATA.permanentSolutions.clean_water_infrastructure;
+            const percent = ((water.value / 1000) * 100).toFixed(1).replace(/\.0$/, '');
+            const remaining = 1000 - water.value;
+
+            document.getElementById('water-beneficiaries').textContent = water.beneficiaries.split(' without')[0];
+            document.getElementById('water-cost').textContent = `$${water.value} billion`;
+            document.getElementById('water-cost-2').textContent = `$${water.value}B`;
+            document.getElementById('water-percent').textContent = `${percent}%`;
+            document.getElementById('water-remaining').textContent = `$${remaining} billion`;
+
+            const combo = DATA.perpetualFund.covers_three_diseases_nearly_exactly;
+            const surplusPct = combo.surplus.match(/\d+/)[0];
+            document.getElementById('perpetual-percent').textContent = `${surplusPct}%`;
+
+            const p = DATA.perpetualPrograms;
+            const rows = [
+                ['Tuberculosis', p.tb_programs],
+                ['Malaria', p.malaria_programs],
+                ['HIV/AIDS', p.hiv_aids_programs]
+            ];
+            const breakdown = document.getElementById('perpetual-breakdown');
+            breakdown.innerHTML = rows.map(([label, d]) => {
+                const pct = Math.round((d.currentFunding / d.value) * 100);
+                return `<div><span>${label} &mdash; needs $${d.value}B/yr</span><strong>${pct}% funded</strong></div>`;
+            }).join('');
+        }
+
+        // ---------- Boot ----------
+        async function loadData() {
+            const [figuresRes, countriesRes] = await Promise.all([
+                fetch('data/figures.json'),
+                fetch('data/countries_gdp_2026.json')
+            ]);
+            if (!figuresRes.ok || !countriesRes.ok) {
+                throw new Error('Data files did not load (non-OK response)');
+            }
+            DATA = await figuresRes.json();
+            COUNTRIES = await countriesRes.json();
+        }
+
+        loadData()
+            .then(() => {
+                populateText();
+                initCountriesCanvas();
+                initWaterCanvas();
+                initPerpetualCanvas();
+                ScrollTrigger.refresh();
+            })
+            .catch((err) => {
+                console.error('Failed to load data files:', err);
+                const banner = document.createElement('div');
+                banner.className = 'load-error';
+                banner.textContent = "Couldn't load data/figures.json or data/countries_gdp_2026.json. If you opened this file directly (file://), serve it from a local web server instead, e.g.: python3 -m http.server";
+                document.body.prepend(banner);
+            });
     </script>
 </body>
 </html>
